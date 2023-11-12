@@ -1419,7 +1419,9 @@ if (strlen($_SESSION['id'] == 0)) {
                                                                                         // echo "{".$tableau1[0].".".$tableau1[1].".".$tableau1[2].".".$tableau1[3].".".$tableau1[4] .".".$tableau1[5].".".$tableau1[6].".".$tableau1[7].".".$tableau1[8]."}" ;                                                                                 
                                                                                         
                                                                                         ?>
-                                                                       <?php
+                                                                      
+                                                                      <div id="main">
+                                                                      <?php
                                                                                                                                            
 $fin0="";
 $fin1="";
@@ -1430,16 +1432,20 @@ while($row=mysqli_fetch_array($res))
     $fin1=$row["fin"];
     $nom1=$row["nom"];
 };
+
 $_SESSION["fin1"]=$fin1;
 $_SESSION["nom1"]=$nom1;
 $_SESSION["stop1"]='0';
 $_SESSION["stop2"]='0';
 ?>
+<form>
+  <input type="hidden" id="titre" value="<?php echo $nom1; ?>">
+</form>
 <!-- <div id="response"></div> -->
 
 
 <div class='square-box' opacity:0.99>
-        <div class='square-content' id="response" style='font-size:36px ; color:black'></div>
+        <div class='square-content' id="response" style='font-size:30px ; color:black'></div>
     </div>
 
 <!-- <div id="response2"></div> -->
@@ -1454,11 +1460,12 @@ if ($_SESSION["stop1"] == '0') { ?>
         function stopTimeout1() {clearInterval(cleartimer1); }
         let cleartimer1 = setInterval(function()
         {
-            var xmlhttp=new XMLHttpRequest();            
+            var xmlhttp=new XMLHttpRequest();   
+                     
             xmlhttp.open("GET","response.php",false);
             xmlhttp.send(null);
             // document.getElementById("response").innerHTML="fin blinde 1 = "+xmlhttp.responseText;
-            if (xmlhttp.responseText == 0) {clearInterval(cleartimer1)} else {document.getElementById("response").innerHTML="Fin blinde : "+xmlhttp.responseText;}
+            if (xmlhttp.responseText == 0) {clearInterval(cleartimer1)} else {document.getElementById("response").innerHTML=document.getElementById("titre").value+" : "+xmlhttp.responseText;}
         },1000);
     </script>
     <?php }
@@ -1471,7 +1478,7 @@ else
 
 ?> 
 
-                                                                       <div id="main">
+                                                                       <!-- <div id="main"> -->
     <div class="players">
         <div class="player player-1 playing" id="player1" >
             <div class="avatar p1" style="background: blue ;font-size: 1.7vw">
