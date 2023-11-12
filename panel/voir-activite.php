@@ -1445,7 +1445,7 @@ $_SESSION["stop2"]='0';
 
 
 <div class='square-box' opacity:0.99>
-        <div class='square-content' id="response" style='font-size:30px ; color:black'></div>
+        <div class='square-content' id="response" style='font-size:30px ; color:white'></div>
     </div>
 
 <!-- <div id="response2"></div> -->
@@ -1455,7 +1455,7 @@ $_SESSION["stop2"]='0';
  
 if ($_SESSION["stop1"] == '0') { ?>
     <div id="response"></div>
-    <div id="response2"></div>
+    
     <script type="text/javascript">
         function stopTimeout1() {clearInterval(cleartimer1); }
         let cleartimer1 = setInterval(function()
@@ -1464,7 +1464,7 @@ if ($_SESSION["stop1"] == '0') { ?>
                      
             xmlhttp.open("GET","response.php",false);
             xmlhttp.send(null);
-            // document.getElementById("response").innerHTML="fin blinde 1 = "+xmlhttp.responseText;
+            
             if (xmlhttp.responseText == 0) {clearInterval(cleartimer1)} else {document.getElementById("response").innerHTML=document.getElementById("titre").value+" : "+xmlhttp.responseText;}
         },1000);
     </script>
