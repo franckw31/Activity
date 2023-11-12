@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include_once('../include/config.php');
-$fin0="";
+$fin0=" ";
 $fin1="";
 $nom1="";
 $res=mysqli_query($con,"SELECT * FROM blindes WHERE id='1'");
