@@ -1419,57 +1419,9 @@ if (strlen($_SESSION['id'] == 0)) {
                                                                                         // echo "{".$tableau1[0].".".$tableau1[1].".".$tableau1[2].".".$tableau1[3].".".$tableau1[4] .".".$tableau1[5].".".$tableau1[6].".".$tableau1[7].".".$tableau1[8]."}" ;                                                                                 
                                                                                         
                                                                                         ?>
-                                                                       <?php
-                                                                                                                                           
-$fin0="";
-$fin1="";
-$nom1="";
-$res=mysqli_query($con,"SELECT * FROM blindes WHERE id='1'");
-while($row=mysqli_fetch_array($res))
-{
-    $fin1=$row["fin"];
-    $nom1=$row["nom"];
-};
-$_SESSION["fin1"]=$fin1;
-$_SESSION["nom1"]=$nom1;
-$_SESSION["stop1"]='0';
-$_SESSION["stop2"]='0';
-?>
-<!-- <div id="response"></div> -->
+                                                                       
+                                                                       
 
-
-<div class='square-box' opacity:0.99>
-        <div class='square-content' id="response" style='font-size:36px ; color:black'></div>
-    </div>
-
-<!-- <div id="response2"></div> -->
-<?php
- $fini1=$_SESSION['stop1'];
- $fini2=$_SESSION['stop2']; 
- 
-if ($_SESSION["stop1"] == '0') { ?>
-    <div id="response"></div>
-    <div id="response2"></div>
-    <script type="text/javascript">
-        function stopTimeout1() {clearInterval(cleartimer1); }
-        let cleartimer1 = setInterval(function()
-        {
-            var xmlhttp=new XMLHttpRequest();            
-            xmlhttp.open("GET","response.php",false);
-            xmlhttp.send(null);
-            // document.getElementById("response").innerHTML="fin blinde 1 = "+xmlhttp.responseText;
-            if (xmlhttp.responseText == 0) {clearInterval(cleartimer1)} else {document.getElementById("response").innerHTML="Fin blinde : "+xmlhttp.responseText;}
-        },1000);
-    </script>
-    <?php }
-else
-{
-    ?>
-    <!-- <script type="text/javascript"> window.location.href="http://poker31.org/toto.php" </script> -->
-    <?php ; echo "stop1 car stop = ".$_SESSION['stop1'];
-}
-
-?> 
 
                                                                        <div id="main">
     <div class="players">
@@ -1583,9 +1535,9 @@ else
             </div>
         </div>
     </div>
-    <!-- <div class='square-box' opacity:0.99>
-        <div class='square-content'> <div id="response"></div></div>
-    </div> -->
+    <div class='square-box' opacity:0.99>
+        <div class='square-content'> <span>TABLE N°4</span></div>
+    </div>
     <div class='square-box2' opacity:0.99>
         <div class='square-content'> <span></span></div>
     </div>
