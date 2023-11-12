@@ -27,8 +27,8 @@ $_SESSION["stop2"]='0';
 
 echo "Début = ".date("Y-m-d H:i:s")." / "."Fin = ".$_SESSION["fin1"]." etat : ".$_SESSION["stop2"];
 ?>
-<div id="response"></div>
-<div id="response2"></div>
+<div id="response">----</div>
+<div id="response2">---</div>
 <?php
  $fini1=$_SESSION['stop1'];
  $fini2=$_SESSION['stop2']; 

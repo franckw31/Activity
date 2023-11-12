@@ -31,7 +31,7 @@ if ($_SESSION["stop"] == '0') { ?>
             if (xmlhttp.responseText == 0) {clearInterval(cleartimer);stopTimeout();window.location="/index.php";}
         },1000);
     </script>
-<?php };
+<?php }
 else
 {
     echo "stop car stop = ".$_SESSION['stop'];?>
