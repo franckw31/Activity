@@ -30,8 +30,7 @@
                         $nb_tables = $row["nb-tables"]; 
                     };   
                 // $nb_tables=2;
-                $latable = "";
-                
+                $latable = "";               
                 $pointeur = $res2["id-activite"];
                 $sql3= mysqli_query($con, "SELECT * FROM `participation` WHERE ( (`id-activite` = '$pointeur' AND `option` NOT LIKE  'Annule') AND (`id-activite` = '$pointeur' AND `option` NOT LIKE  'Elimine') ) " ) ;
                 $nb = mysqli_num_rows($sql3);
