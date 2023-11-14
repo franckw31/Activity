@@ -2,7 +2,7 @@
 session_start();
 
 $departsecondes=strtotime(date("Y-m-d H:i:s"));
-$arriveesecondes1=strtotime($_SESSION["fin"]);
+$arriveesecondes1=strtotime($_SESSION["fin3"]);
 $ecartsecondes1=$arriveesecondes1-$departsecondes;
 
 if ($ecartsecondes1 >= 0)

@@ -283,7 +283,7 @@ if (strlen($_SESSION['id'] == 0)) {
         height: 50%;
         overflow: hidden;
         background: #6495ED;
-        opacity: 0.5;
+        opacity: 0.7;
         left: 0;
         right: 0;
         top: -100px;
@@ -301,7 +301,7 @@ if (strlen($_SESSION['id'] == 0)) {
         height: 20%;
         overflow: hidden;
         background: black;
-        opacity: 0.25;
+        opacity: 0.33;
         left: 0;
         right: 0;
         top: -110px;
@@ -928,9 +928,9 @@ if (strlen($_SESSION['id'] == 0)) {
                                                                                         ?>
                                                                        
                                                                        
-                                                                       <?php include('cpt1.php'); ?>
 
-<!-- <div id="main"> -->
+
+<div id="main">
     <div class="players">
         <div class="player player-1 playing" id="player1" >
             <div class="avatar p1" style="background: blue ;font-size: 1.7vw">
@@ -1088,16 +1088,15 @@ if (strlen($_SESSION['id'] == 0)) {
                     </button>
             </div>
         </div>
-    </div> 
-    <div class='square-box' opacity:0.5>
-    <div class='square-content'><span> <div id="response"></div></span></div>
-        <!-- <div class='square-content'> <span></span></div> -->
     </div>
-    <div class='square-box2' opacity:0.5>
+    <div class='square-box' opacity:0.99>
+        <div class='square-content'> <span>TABLE N°1</span></div>
+    </div>
+    <div class='square-box2' opacity:0.99>
         <div class='square-content'> <span></span></div>
     </div>
 </div>
-                                                                                        
+
 
                                                                                     </div>
                                                                                     </div>
@@ -1122,13 +1121,11 @@ if (strlen($_SESSION['id'] == 0)) {
                                                                                         // echo "{".$tableau1[0].".".$tableau1[1].".".$tableau1[2].".".$tableau1[3].".".$tableau1[4] .".".$tableau1[5].".".$tableau1[6].".".$tableau1[7].".".$tableau1[8]."}" ;                                                                                 
                                                                                         
                                                                                         ?>
-                                                                                    
-                                                                       <?php include('cpt1.php'); ?>
-
+                                                                       
                                                                        
 
 
-<!-- <div id="main"> -->
+<div id="main">
     <div class="players">
         <div class="player player-1 playing" id="player1" >
             <div class="avatar p1" style="background: blue ;font-size: 1.7vw">
@@ -1241,10 +1238,10 @@ if (strlen($_SESSION['id'] == 0)) {
         </div>
     </div>
     <div class='square-box' opacity:0.99>
-    <div class='square-content'> <div id="response"></div></div>
+        <div class='square-content'> <span>TABLE N°2</span></div>
     </div>
     <div class='square-box2' opacity:0.99>
-        <div class='square-content'> </div>
+        <div class='square-content'> <span></span></div>
     </div>
 
 
@@ -1391,10 +1388,10 @@ if (strlen($_SESSION['id'] == 0)) {
         </div>
     </div>
     <div class='square-box' opacity:0.99>
-    <div class='square-content'> <div id="response"></div></div>
+        <div class='square-content'> <span>TABLE N°3</span></div>
     </div>
     <div class='square-box2' opacity:0.99>
-        <div class='square-content'> </div>
+        <div class='square-content'> <span></span></div>
     </div>
 </div>
 
@@ -1423,14 +1420,74 @@ if (strlen($_SESSION['id'] == 0)) {
                                                                                         
                                                                                         ?>
                                                                       
-                                                                      
+                                                                      <div id="main">
+                                                                      <?php
+                                                                                                                                           
 
-                                                                    <!-- <?php
-                                                                      include_once('cpt1.php');
+$fin="";
+$nom="";
+$res=mysqli_query($con,"SELECT * FROM `blindes` WHERE `id-blinde` = 1");
+while($row=mysqli_fetch_array($res))
+{
+    $fin=$row["fin"];
+    $nom=$row["nom"];
+    $ordre=$row["ordre"];
+};
 
-?>  -->
+$_SESSION["fin"]=$fin;
+$_SESSION["nom"]=$nom;
+$_SESSION["stop"]='0';
+?>
+<form>
+  <input type="hidden" id="nom" value="<?php echo $nom; ?>">
+</form>
 
-                                                                       <div id="main">
+<div class='square-box' opacity:0.99>
+        <div class='square-content' id="response" style='font-size:30px ; color:white'></div>
+    </div>
+
+<?php
+
+if ($_SESSION["stop"] == '0') { ?>
+
+    <div id="response"></div>
+    <script type="text/javascript">
+        let nIntervId;
+        function compteur() {
+            // check if an interval has already been set up
+            if (!nIntervId) {
+                nIntervId = setInterval(decompte, 1000);
+            }
+        }
+
+        function decompte() {
+            var xmlhttp=new XMLHttpRequest();   
+            xmlhttp.open("GET","response.php",false);
+            xmlhttp.send(null);
+                     
+            if (xmlhttp.responseText == 0) {stopcompteur()} else {document.getElementById("response").innerHTML=document.getElementById("nom").value+" : "+xmlhttp.responseText;}
+        }
+
+        function stopcompteur() {
+            clearInterval(nIntervId);
+            // release our intervalID from the variable
+            nIntervId = null;
+            // window.location.href="https://poker31.org/";
+        }
+        compteur();
+    </script>
+
+    <?php }
+else
+{
+    ?>
+    <script type="text/javascript"> window.location.href="http://poker31.org/toto.php" </script>
+    <?php 
+}
+
+?> 
+
+                                                                       <!-- <div id="main"> -->
     <div class="players">
         <div class="player player-1 playing" id="player1" >
             <div class="avatar p1" style="background: blue ;font-size: 1.7vw">
@@ -1542,11 +1599,11 @@ if (strlen($_SESSION['id'] == 0)) {
             </div>
         </div>
     </div>
-    <div class='square-box' opacity:0.99>
+    <!-- <div class='square-box' opacity:0.99>
         <div class='square-content'> <div id="response"></div></div>
-    </div>
+    </div> -->
     <div class='square-box2' opacity:0.99>
-        <div class='square-content'> </div>
+        <div class='square-content'> <span></span></div>
     </div>
 </div>
 
