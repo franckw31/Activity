@@ -1089,6 +1089,7 @@ if (strlen($_SESSION['id'] == 0)) {
             </div>
         </div>
     </div> 
+    
     <div class='square-box' opacity:0.5>
     <div class='square-content'><span> <div id="response"></div></span></div>
         <!-- <div class='square-content'> <span></span></div> -->
