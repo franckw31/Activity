@@ -33,7 +33,7 @@
                 $latable = "";
                 
                 $pointeur = $res2["id-activite"];
-                $sql3= mysqli_query($con, "SELECT * FROM `participation` WHERE (`id-activite` = '$pointeur' AND `option` NOT LIKE  'Annule') " ) ;
+                $sql3= mysqli_query($con, "SELECT * FROM `participation` WHERE ( (`id-activite` = '$pointeur' AND `option` NOT LIKE  'Annule') AND (`id-activite` = '$pointeur' AND `option` NOT LIKE  'Elimine') ) " ) ;
                 $nb = mysqli_num_rows($sql3);
                 $t1max=$nb/$nb_tables;
                 $t1max=(round($t1max, 0));

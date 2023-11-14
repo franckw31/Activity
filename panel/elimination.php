@@ -16,7 +16,7 @@
                 
                 while ($res = mysqli_fetch_array($req)) 
                     { 
-                        $modif = mysqli_query($con, "UPDATE `participation` SET `option` = 'Elimine' WHERE `id-participation` = '$id_participation'");
+                        $modif = mysqli_query($con, "UPDATE `participation` SET `option` = 'Elimine', `id-siege` = '0',`id-table` = '0' WHERE `id-participation` = '$id_participation'");
                     };
                 };
                 // echo ".".$source."Ok"; 
